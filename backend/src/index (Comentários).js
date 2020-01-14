@@ -1,6 +1,15 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 const app = express();
+
+//MongoDB (Banco não relacional) - Podemos hospedar o mesmo na nuvem.
+
+mongoose.connect('mongodb+srv://Eduardo:omnistack@cluster0-6qv5y.mongodb.net/week10?retryWrites=true&w=majority',{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+
 
 //permite que o express compreenda o formato json.
 app.use(express.json()) //.use configura todas as rotas da aplicação (ge, post, put ...)
@@ -33,6 +42,5 @@ app.post('/users', (request, response) => {
     return response.json({message: 'Hello BBosa'});
 }); // Define uma rota da aplicação.
 
-//MongoDB (Banco não relacional) - Podemos hospedar o mesmo na nuvem.
 
 app.listen(3333); //Define a porta da aplicação
